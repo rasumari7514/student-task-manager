@@ -11,6 +11,16 @@ function addTask() {
 
   const li = document.createElement("li");
   li.textContent = task;
+
+const deleteButton = document.createElement("button");
+deleteButton.textContent = "Delete";
+
+deleteButton.onclick = function(event) {
+  event.stopPropagation();
+  li.remove();
+};
+
+li.appendChild(deleteButton);
   li.onclick = function() {
   li.style.textDecoration = "line-through";
 };
