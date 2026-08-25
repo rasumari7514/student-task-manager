@@ -1,8 +1,10 @@
 function addTask() {
   const input = document.getElementById("taskInput");
   const taskList = document.getElementById("taskList");
+  const priority = document.getElementById("priority");
 
   const task = input.value.trim();
+  const selectedPriority = priority.value;
 
   if (task === "") {
     alert("Please enter a task");
@@ -10,20 +12,22 @@ function addTask() {
   }
 
   const li = document.createElement("li");
-  li.textContent = task;
 
-const deleteButton = document.createElement("button");
-deleteButton.textContent = "Delete";
+  li.textContent = task + " - " + selectedPriority + " Priority ";
 
-deleteButton.onclick = function(event) {
-  event.stopPropagation();
-  li.remove();
-};
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Delete";
 
-li.appendChild(deleteButton);
+  deleteButton.onclick = function(event) {
+    event.stopPropagation();
+    li.remove();
+  };
+
+  li.appendChild(deleteButton);
+
   li.onclick = function() {
-  li.style.textDecoration = "line-through";
-};
+    li.style.textDecoration = "line-through";
+  };
 
   taskList.appendChild(li);
 
