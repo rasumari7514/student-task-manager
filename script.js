@@ -11,6 +11,9 @@ function addTask() {
 
   const li = document.createElement("li");
   li.textContent = task;
+  li.onclick = function() {
+  li.style.textDecoration = "line-through";
+};
 
   taskList.appendChild(li);
 
