@@ -123,30 +123,41 @@ document.getElementById("priorityFilter").addEventListener("change", function() 
     }
   });
 });
+
 document.getElementById("dateFilter").addEventListener("change", function() {
   const selectedFilter = this.value;
   const tasks = document.querySelectorAll("#taskList li");
-  const today = new Date().toISOString().split("T")[0];
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
   tasks.forEach(function(task) {
-    const text = task.textContent;
-    const match = text.match(/Due: (\d{4}-\d{2}-\d{2})/);
+    const match = task.textContent.match(/Due:\s*(\d{4}-\d{2}-\d{2})/);
 
-    if (!match) return;
-
-    const dueDate = match[1];
-    let show = true;
-
-    if (selectedFilter === "Today") {
-      show = dueDate === today;
-    } 
-    else if (selectedFilter === "Upcoming") {
-      show = dueDate > today;
-    } 
-    else if (selectedFilter === "Overdue") {
-      show = dueDate < today;
+    if (!match) {
+      task.style.display = "none";
+      return;
     }
 
-    task.style.display = show ? "" : "none";
+    const taskDate = new Date(match[1] + "T00:00:00");
+    let showTask = true;
+
+    if (selectedFilter === "Today") {
+      showTask = taskDate.getTime() === today.getTime();
+    }
+
+    else if (selectedFilter === "Upcoming") {
+      showTask = taskDate > today;
+    }
+
+    else if (selectedFilter === "Overdue") {
+      showTask = taskDate < today;
+    }
+
+    else if (selectedFilter === "All") {
+      showTask = true;
+    }
+
+    task.style.display = showTask ? "" : "none";
   });
 });
