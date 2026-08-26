@@ -32,6 +32,15 @@ function addTask() {
   };
 
   li.appendChild(deleteButton);
+  const completeButton = document.createElement("button");
+completeButton.textContent = "Complete";
+
+completeButton.onclick = function(event) {
+  event.stopPropagation();
+  li.style.textDecoration = "line-through";
+};
+
+li.appendChild(completeButton);
 
   li.onclick = function() {
     li.style.textDecoration = "line-through";
