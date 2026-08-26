@@ -1,3 +1,12 @@
+function updateStats() {
+  const total = document.querySelectorAll("#taskList li").length;
+  const completed = document.querySelectorAll("#taskList li.completed").length;
+  const pending = total - completed;
+
+  document.getElementById("totalTasks").textContent = total;
+  document.getElementById("completedTasks").textContent = completed;
+  document.getElementById("pendingTasks").textContent = pending;
+}
 function addTask() {
   const input = document.getElementById("taskInput");
   const taskList = document.getElementById("taskList");
