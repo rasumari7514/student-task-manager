@@ -31,6 +31,23 @@ function addTask() {
     li.remove();
   };
 
+  const editButton = document.createElement("button");
+editButton.textContent = "Edit";
+
+editButton.onclick = function(event) {
+  event.stopPropagation();
+
+  const newTask = prompt("Edit your task:", task);
+
+  if (newTask !== null && newTask.trim() !== "") {
+    li.firstChild.textContent =
+      newTask.trim() + " - " + selectedPriority +
+      " Priority - Due: " + selectedDate + " ";
+  }
+};
+
+li.appendChild(editButton);
+  
   li.appendChild(deleteButton);
 
   const completeButton = document.createElement("button");
