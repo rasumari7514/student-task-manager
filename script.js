@@ -17,6 +17,8 @@ function addTask() {
   const selectedPriority = priority.value;
   const selectedDate = dueDate.value;
 
+  const description = document.getElementById("taskDescription").value.trim();
+  
   if (task === "") {
     alert("Please enter a task");
     return;
@@ -31,8 +33,9 @@ function addTask() {
 
   const taskText = document.createElement("span");
   taskText.textContent =
-    task + " - " + selectedPriority +
-    " Priority - Due: " + selectedDate + " ";
+  task + " - " + selectedPriority +
+  " Priority - Due: " + selectedDate +
+  " - " + description;
 
   li.appendChild(taskText);
 
@@ -45,9 +48,10 @@ function addTask() {
     const newTask = prompt("Edit your task:", task);
 
     if (newTask !== null && newTask.trim() !== "") {
-      taskText.textContent =
-        newTask.trim() + " - " + selectedPriority +
-        " Priority - Due: " + selectedDate + " ";
+     taskText.textContent =
+  newTask.trim() + " - " + selectedPriority +
+  " Priority - Due: " + selectedDate +
+  " - " + description;
     }
   };
 
