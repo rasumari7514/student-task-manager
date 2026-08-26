@@ -40,8 +40,11 @@ editButton.onclick = function(event) {
   const newTask = prompt("Edit your task:", task);
 
   if (newTask !== null && newTask.trim() !== "") {
-    alert("Task changed to: " + newTask.trim());
+  li.childNodes[0].nodeValue =
+    newTask.trim() + " - " + selectedPriority +
+    " Priority - Due: " + selectedDate + " ";
   }
+  
 };
 
 li.appendChild(editButton);
