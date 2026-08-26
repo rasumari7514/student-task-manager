@@ -69,3 +69,30 @@ li button {
 li button:hover {
   background: #4f5fd5;
 }
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px auto 25px;
+}
+
+.stats div {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 12px 20px;
+  border-radius: 15px;
+  min-width: 85px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.stats span {
+  display: block;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.stats small {
+  color: white;
+  font-size: 13px;
+}
