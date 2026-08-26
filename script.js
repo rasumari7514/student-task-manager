@@ -20,8 +20,29 @@ function addTask() {
 
   const li = document.createElement("li");
 
-  li.textContent =
-    task + " - " + selectedPriority + " Priority - Due: " + selectedDate + " ";
+  const taskText = document.createElement("span");
+  taskText.textContent =
+    task + " - " + selectedPriority +
+    " Priority - Due: " + selectedDate + " ";
+
+  li.appendChild(taskText);
+
+  const editButton = document.createElement("button");
+  editButton.textContent = "Edit";
+
+  editButton.onclick = function(event) {
+    event.stopPropagation();
+
+    const newTask = prompt("Edit your task:", task);
+
+    if (newTask !== null && newTask.trim() !== "") {
+      taskText.textContent =
+        newTask.trim() + " - " + selectedPriority +
+        " Priority - Due: " + selectedDate + " ";
+    }
+  };
+
+  li.appendChild(editButton);
 
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
@@ -31,47 +52,29 @@ function addTask() {
     li.remove();
   };
 
-  const editButton = document.createElement("button");
-editButton.textContent = "Edit";
-
-editButton.onclick = function(event) {
-  event.stopPropagation();
-
-  const newTask = prompt("Edit your task:", task);
-
-  if (newTask !== null && newTask.trim() !== "") {
-  li.childNodes[0].nodeValue =
-    newTask.trim() + " - " + selectedPriority +
-    " Priority - Due: " + selectedDate + " ";
-  }
-  
-};
-
-li.appendChild(editButton);
-  
   li.appendChild(deleteButton);
 
   const completeButton = document.createElement("button");
   completeButton.textContent = "Complete";
 
   completeButton.onclick = function(event) {
-  event.stopPropagation();
-  li.style.textDecoration = "line-through";
-  completeButton.textContent = "Completed";
-};
+    event.stopPropagation();
+    li.style.textDecoration = "line-through";
+    completeButton.textContent = "Completed";
+  };
 
   li.appendChild(completeButton);
 
   if (selectedPriority === "High") {
-  li.style.color = "red";
-} else if (selectedPriority === "Medium") {
-  li.style.color = "orange";
-} else {
-  li.style.color = "green";
+    li.style.color = "red";
+  } else if (selectedPriority === "Medium") {
+    li.style.color = "orange";
+  } else {
+    li.style.color = "green";
   }
 
   taskList.appendChild(li);
 
   input.value = "";
   dueDate.value = "";
-}
+      }
