@@ -96,3 +96,15 @@ deleteButton.onclick = function(event) {
   input.value = "";
   dueDate.value = "";
       }
+document.getElementById("searchTask").addEventListener("input", function() {
+  const searchValue = this.value.toLowerCase();
+  const tasks = document.querySelectorAll("#taskList li");
+
+  tasks.forEach(function(task) {
+    if (task.textContent.toLowerCase().includes(searchValue)) {
+      task.style.display = "";
+    } else {
+      task.style.display = "none";
+    }
+  });
+});
