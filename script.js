@@ -37,9 +37,10 @@ function addTask() {
   completeButton.textContent = "Complete";
 
   completeButton.onclick = function(event) {
-    event.stopPropagation();
-    li.style.textDecoration = "line-through";
-  };
+  event.stopPropagation();
+  li.style.textDecoration = "line-through";
+  completeButton.textContent = "Completed";
+};
 
   li.appendChild(completeButton);
 
