@@ -32,45 +32,19 @@ function addTask() {
   };
 
   li.appendChild(deleteButton);
+
   const completeButton = document.createElement("button");
-completeButton.textContent = "Complete";
+  completeButton.textContent = "Complete";
 
-completeButton.onclick = function(event) {
-  event.stopPropagation();
-  li.style.textDecoration = "line-through";
-};
-
-li.appendChild(completeButton);
-
-  li.onclick = function() {
+  completeButton.onclick = function(event) {
+    event.stopPropagation();
     li.style.textDecoration = "line-through";
   };
+
+  li.appendChild(completeButton);
 
   taskList.appendChild(li);
 
   input.value = "";
   dueDate.value = "";
-}
-checkDeadline();
-function checkDeadline() {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  const dueDate = document.getElementById("dueDate").value;
-
-  if (dueDate === "") {
-    return;
-  }
-
-  const selectedDate = new Date(dueDate);
-  selectedDate.setHours(0, 0, 0, 0);
-
-  const difference = selectedDate - today;
-  const daysLeft = difference / (1000 * 60 * 60 * 24);
-
-  if (daysLeft === 0) {
-    alert("⚠️ Your task is due today!");
-  } else if (daysLeft === 1) {
-    alert("🔔 Your task is due tomorrow!");
-  }
 }
