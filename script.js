@@ -108,3 +108,18 @@ document.getElementById("searchTask").addEventListener("input", function() {
     }
   });
 });
+document.getElementById("priorityFilter").addEventListener("change", function() {
+  const selectedPriority = this.value;
+  const tasks = document.querySelectorAll("#taskList li");
+
+  tasks.forEach(function(task) {
+    if (
+      selectedPriority === "All" ||
+      task.textContent.includes(selectedPriority + " Priority")
+    ) {
+      task.style.display = "";
+    } else {
+      task.style.display = "none";
+    }
+  });
+});
