@@ -43,6 +43,14 @@ function addTask() {
 
   li.appendChild(completeButton);
 
+  if (selectedPriority === "High") {
+  li.style.color = "red";
+} else if (selectedPriority === "Medium") {
+  li.style.color = "orange";
+} else {
+  li.style.color = "green";
+  }
+
   taskList.appendChild(li);
 
   input.value = "";
