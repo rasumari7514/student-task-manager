@@ -56,21 +56,24 @@ function addTask() {
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Delete";
 
-  deleteButton.onclick = function(event) {
-    event.stopPropagation();
-    li.remove();
-  };
-
+deleteButton.onclick = function(event) {
+  event.stopPropagation();
+  li.remove();
+  updateStats();
+};
+  
   li.appendChild(deleteButton);
 
   const completeButton = document.createElement("button");
   completeButton.textContent = "Complete";
 
   completeButton.onclick = function(event) {
-    event.stopPropagation();
-    li.style.textDecoration = "line-through";
-    completeButton.textContent = "Completed";
-  };
+  event.stopPropagation();
+  li.style.textDecoration = "line-through";
+  li.classList.add("completed");
+  completeButton.textContent = "Completed";
+  updateStats();
+};
 
   li.appendChild(completeButton);
 
@@ -84,6 +87,8 @@ function addTask() {
 
   taskList.appendChild(li);
 
+  updateStats();
+  
   input.value = "";
   dueDate.value = "";
       }
