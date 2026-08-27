@@ -12,11 +12,11 @@ function addTask() {
   const taskList = document.getElementById("taskList");
   const priority = document.getElementById("priority");
   const dueDate = document.getElementById("dueDate");
-
+  const category = document.getElementById("category");
   const task = input.value.trim();
   const selectedPriority = priority.value;
   const selectedDate = dueDate.value;
-
+  const selectedCategory = category.value;
   const description = document.getElementById("taskDescription").value.trim();
   
   if (task === "") {
@@ -33,7 +33,8 @@ function addTask() {
 
   const taskText = document.createElement("span");
   taskText.textContent =
-  task + " - " + selectedPriority +
+  task + " - " + selectedCategory +
+  " - " + selectedPriority +
   " Priority - Due: " + selectedDate +
   " - " + description;
 
