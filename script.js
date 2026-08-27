@@ -33,7 +33,7 @@ function addTask() {
 
   const taskText = document.createElement("span");
   taskText.textContent =
-  task + " - " + selectedCategory +
+  newTask.trim() + " - " + selectedCategory +
   " - " + selectedPriority +
   " Priority - Due: " + selectedDate +
   " - " + description;
