@@ -30,13 +30,13 @@ function addTask() {
   }
 
   const li = document.createElement("li");
-
   const taskText = document.createElement("span");
-  taskText.textContent =
-  newTask.trim() + " - " + selectedCategory +
+taskText.textContent =
+  task + " - " + selectedCategory +
   " - " + selectedPriority +
   " Priority - Due: " + selectedDate +
   " - " + description;
+  
 
   li.appendChild(taskText);
 
@@ -50,7 +50,8 @@ function addTask() {
 
     if (newTask !== null && newTask.trim() !== "") {
      taskText.textContent =
-  newTask.trim() + " - " + selectedPriority +
+  newTask.trim() + " - " + selectedCategory +
+  " - " + selectedPriority +
   " Priority - Due: " + selectedDate +
   " - " + description;
     }
